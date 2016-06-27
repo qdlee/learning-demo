@@ -1,0 +1,455 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>jQuery老虎机转动抽奖程序</title>
+</head>
+
+<style type="text/css">
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button, textarea, blockquote, th, td, p { margin:0; padding:0 }
+input, button, select, textarea, a:fouse {outline:none}
+li {list-style:none;}
+img {border:none;}
+textarea {resize:none;}
+body {margin:0;font:12px "微软雅黑"; background:#feecd4;}
+/* === End CSS Reset ========== */
+body{min-width:1000px;_width:expression((document.documentElement.clientWidth||document.body.clientWidth)<950?"950px":"");}
+a{text-decoration:none;}
+.clearfix:after {visibility:hidden;display:block;font-size:0;content:" ";clear:both;height:0;}
+.clearfix{*zoom:1;}
+.container{width:1000px;margin:0 auto;position:relative;/*height:198px;*/}
+/* main2 */
+.main2{background:url("images/main2.png") no-repeat center;
+height:689px;_width:expression((document.documentElement.clientWidth||document.body.clientWidth)<1000?"1000px":"");/*最小宽度*/}
+.main3{_width:expression((document.documentElement.clientWidth||document.body.clientWidth)<1000?"1000px":"");}
+.main3-text{color:#744b00;font-size:23px;font-weight:bold;position:absolute;left:74px;top:210px;}
+.main3-text2{color:#744b00;font-size:14px;position:absolute;left:74px;top:254px;line-height:22px;width:867px;}
+.main-text{position:absolute;left:360px;top:325px;color:#b03b01;font-size:16px;}
+.main2-text1{position:absolute;left:79px;top:45px;color:#ffffff;font-size:16px;}
+.main2-text2{position:absolute;left:69px;top:67px;color:#ffffff;font-size:23px;font-weight:bold;}
+.main2-text2 span{color:#ffff00;}
+.main2-text3{position:absolute;left:69px;top:97px;color:#ffffff;font-size:18px;}
+.main2-text4{position:absolute;left:382px;top:34px;color:#ffffff;font-size:18px;}
+.main2-text4 span{color:#ffe700;font-weight:bold;}
+.main2-text5{position:absolute;left:665px;top:34px;color:#ffffff;font-size:18px;}
+.main2-text5 span{color:#ffe700;font-weight:bold;}
+.num{position:absolute;left:248px;top:171px;width:124px;height:198px;overflow:hidden;}
+.num-con{position:absolute;top:0px;}
+.num-img{background:url("images/num.png") no-repeat;width:124px;height:1298px;margin-bottom:4px;}
+.num2{left:399px;}
+.num3{left:551px;}
+.main3-btn{width:307px;height:95px;position:absolute;left:313px;top:-290px;cursor:pointer;}
+.name_wrap{
+	width:124px;
+}
+.name_wrap div{
+	width:124px;
+	height:198px;
+	line-height: 198px;
+	color:red;
+	text-align:center;
+	font-size: 50px;
+}
+</style>
+
+<body>
+
+<div class="main2">
+	<div class="container">
+		<div class="num num1">
+			<div class="num-con num-con1">
+				<div class="name_wrap">
+					<div></div>
+					<div>孙</div>
+					<div>郭</div>
+					<div>谢</div>
+					<div>李</div>
+					<div>董</div>
+					<div>孔</div>
+					<div>杨</div>
+					<div>左</div>
+					<div>亓</div>
+					<div>王</div>
+					<div>刘</div>
+					<div>赵</div>
+					<div>张</div>
+					<div>邢</div>
+					<div>吕</div>
+					<div>豆</div>
+					<div>袁</div>
+					<div>季</div>
+					<div>齐</div>
+				</div>
+				<div class="name_wrap">
+					<div></div>
+					<div>孙</div>
+					<div>郭</div>
+					<div>谢</div>
+					<div>李</div>
+					<div>董</div>
+					<div>孔</div>
+					<div>杨</div>
+					<div>左</div>
+					<div>亓</div>
+					<div>王</div>
+					<div>刘</div>
+					<div>赵</div>
+					<div>张</div>
+					<div>邢</div>
+					<div>吕</div>
+					<div>豆</div>
+					<div>袁</div>
+					<div>季</div>
+					<div>齐</div>
+				</div>
+				<div class="name_wrap">
+					<div></div>
+					<div>孙</div>
+					<div>郭</div>
+					<div>谢</div>
+					<div>李</div>
+					<div>董</div>
+					<div>孔</div>
+					<div>杨</div>
+					<div>左</div>
+					<div>亓</div>
+					<div>王</div>
+					<div>刘</div>
+					<div>赵</div>
+					<div>张</div>
+					<div>邢</div>
+					<div>吕</div>
+					<div>豆</div>
+					<div>袁</div>
+					<div>季</div>
+					<div>齐</div>
+				</div>
+			</div>
+		</div>
+		<div class="num num2">
+			<div class="num-con num-con2">
+				<div class="name_wrap">
+					<div></div>
+					<div>亮</div>
+					<div>晋</div>
+					<div>凯</div>
+					<div>阳</div>
+					<div>磊</div>
+					<div>天</div>
+					<div>建</div>
+					<div>浩</div>
+					<div>京</div>
+					<div>连</div>
+					<div>继</div>
+					<div>扬</div>
+					<div>媛</div>
+					<div>程</div>
+					<div>一</div>
+					<div>振</div>
+					<div>健</div>
+					<div>岩</div>
+					<div>立</div>
+					<div>瑗</div>
+					<div>莎</div>
+					<div>全</div>
+					<div>欣</div>
+					<div>福</div>
+					<div>丹</div>
+					<div>珊</div>
+				</div>
+				<div class="name_wrap">
+					<div></div>
+					<div>亮</div>
+					<div>晋</div>
+					<div>凯</div>
+					<div>阳</div>
+					<div>磊</div>
+					<div>天</div>
+					<div>建</div>
+					<div>浩</div>
+					<div>京</div>
+					<div>连</div>
+					<div>继</div>
+					<div>扬</div>
+					<div>媛</div>
+					<div>程</div>
+					<div>一</div>
+					<div>振</div>
+					<div>健</div>
+					<div>岩</div>
+					<div>立</div>
+					<div>瑗</div>
+					<div>莎</div>
+					<div>全</div>
+					<div>欣</div>
+					<div>福</div>
+					<div>丹</div>
+					<div>珊</div>
+				</div>
+				<div class="name_wrap">
+					<div></div>
+					<div>亮</div>
+					<div>晋</div>
+					<div>凯</div>
+					<div>阳</div>
+					<div>磊</div>
+					<div>天</div>
+					<div>建</div>
+					<div>浩</div>
+					<div>京</div>
+					<div>连</div>
+					<div>继</div>
+					<div>扬</div>
+					<div>媛</div>
+					<div>程</div>
+					<div>一</div>
+					<div>振</div>
+					<div>健</div>
+					<div>岩</div>
+					<div>立</div>
+					<div>瑗</div>
+					<div>莎</div>
+					<div>全</div>
+					<div>欣</div>
+					<div>福</div>
+					<div>丹</div>
+					<div>珊</div>
+				</div>
+			</div>
+		</div>
+		<div class="num num3">
+			<div class="num-con num-con3">
+				<div class="name_wrap">
+					<div></div>
+					<div>麟</div>
+					<div>日</div>
+					<div>利</div>
+					<div>奕</div>
+					<div>哲</div>
+					<div>然</div>
+					<div>秋</div>
+					<div>莎</div>
+					<div>远</div>
+					<div>鑫</div>
+					<div>坤</div>
+					<div>珊</div>
+				</div>
+				<div class="name_wrap">
+					<div></div>
+					<div>麟</div>
+					<div>日</div>
+					<div>利</div>
+					<div>奕</div>
+					<div>哲</div>
+					<div>然</div>
+					<div>秋</div>
+					<div>莎</div>
+					<div>远</div>
+					<div>鑫</div>
+					<div>坤</div>
+					<div>珊</div>
+				</div>
+				<div class="name_wrap">
+					<div></div>
+					<div>麟</div>
+					<div>日</div>
+					<div>利</div>
+					<div>奕</div>
+					<div>哲</div>
+					<div>然</div>
+					<div>秋</div>
+					<div>莎</div>
+					<div>远</div>
+					<div>鑫</div>
+					<div>坤</div>
+					<div>珊</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="main3">
+	<div class="container">
+		<div class="main3-btn"></div>
+	</div>
+</div>
+
+</body>
+</html>
+<script type="text/javascript"  src="js/jquery.js"></script>
+<script type="text/javascript">
+
+/*------------------------工具方法------------------------------------*/
+function findWord (array,word) {
+	for(var i in array){
+		if(array[i]===word){
+			return i;
+		}
+	}
+	return -1;
+}
+
+function createTag (array,tag) {
+	var str = '';
+	for(var i in array){
+		str += '<'+tag+'>'+array[i]+'</'+tag+'>';
+	}
+	console.log(str);
+}
+
+function createPsArray (start,len) {
+	var str ="";
+	for(var i=0;i<len;i++){
+		var num = start-198*i;
+		str += "'"+num+"',";
+	}
+	console.log(str);
+}
+function createSingle (names) {
+	var first = '',
+		second = '',
+		third = '';
+	for(var i in names){
+		var ns = names[i].split('');
+		if(first.indexOf(ns[0])===-1){
+			first += ns[0];
+		}
+		if(second.indexOf(ns[1])===-1){
+			second += ns[1];
+		}
+		if(ns[2] && third.indexOf(ns[2]) === -1){
+			third += ns[2];
+		}
+	}
+	console.log(first.split(''));
+	console.log(second.split(''));
+	console.log(third.split(''));
+}
+
+// createSingle(names);
+// console.log(createTag(first,'div'));
+// console.log(createTag(second,'div'));
+// console.log(createTag(third,'div'));
+// console.log(first.length);
+// console.log(second.length);
+// console.log(third.length);
+// console.log(names.length);
+// createPsArray(-8316,first.length+1);
+// createPsArray(-11484,second.length+1);
+// createPsArray(-5940,third.length+1);
+
+/*------------------------主程序------------------------------------*/
+
+var passed = [],	//选中过的人
+	flag = false,	//是否正在运行中
+	names = ['孙亮','郭晋麟','谢凯','李阳','董磊','孔天日','杨建利','左浩','亓京','李连奕','王继哲','刘扬','王媛','李程','赵阳','张一然','邢振','杨健','吕岩','豆立秋','袁瑗','赵莎莎','季建远','刘全鑫','齐欣','李福坤','李丹','王珊珊'],
+	first = ["孙", "郭", "谢", "李", "董", "孔", "杨", "左", "亓", "王", "刘", "赵", "张", "邢", "吕", "豆", "袁", "季", "齐"],
+	second = ["亮", "晋", "凯", "阳", "磊", "天", "建", "浩", "京", "连", "继", "扬", "媛", "程", "一", "振", "健", "岩", "立", "瑗", "莎", "全", "欣", "福", "丹", "珊"],
+	third = [ "麟", "日", "利", "奕", "哲", "然", "秋", "莎", "远", "鑫", "坤", "珊"],
+	pos1 = ['-7920','-8118','-8316','-8514','-8712','-8910','-9108','-9306','-9504','-9702','-9900','-10098','-10296','-10494','-10692','-10890','-11088','-11286','-11484','-11682'],
+	pos2 = ['-10692','-10890','-11088','-11286','-11484','-11682','-11880','-12078','-12276','-12474','-12672','-12870','-13068','-13266','-13464','-13662','-13860','-14058','-14256','-14454','-14652','-14850','-15048','-15246','-15444','-15642','-15840'],
+	pos3 = ['-5148','-5346','-5544','-5742','-5940','-6138','-6336','-6534','-6732','-6930','-7128','-7326','-7524'],
+	winner;
+
+	// console.log(first.length);
+	// console.log(second.length);
+	// console.log(third.length);
+	// console.log(names.length);
+	// createPsArray(-7920,first.length+1);
+	// createPsArray(-10692,second.length+1);
+	// createPsArray(-5148,third.length+1);
+
+/**
+ * 随机生成一个没有选择过人的序号
+ */
+function getWinner () {
+	if(passed.length===0 && localStorage.getItem('lottery_passed')){
+		var ps = [];
+		localStorage.getItem('lottery_passed').split(',').forEach(function(val){
+			ps.push(parseInt(val));
+		});
+		passed = ps || [];
+	}
+	var winner;
+	while(1){
+		winner = Math.floor(Math.random()*28);
+		if(passed.indexOf(winner)===-1){
+			passed.push(winner);
+			localStorage.setItem('lottery_passed', passed);
+			return winner;
+		}
+		console.log('this');
+	}
+}
+
+/**
+ * 重置界面
+ */
+function reset(){
+	$(".num-con1,.num-con2,.num-con3").css('transition','0s');
+	$(".num-con1,.num-con2,.num-con3").css({"top":0});
+}
+
+/**
+ * 抽奖
+ */
+function doDraw () {
+	if(passed.length===28){
+		localStorage.removeItem('lottery_passed');
+		return;
+	}
+	$(".num-con1,.num-con2,.num-con3").css('transition','top 15s cubic-bezier(0.10,0,0.2,1)');
+	
+	winner = getWinner();
+
+	console.log(passed);
+	var name = names[winner].split(''),
+		nf = parseInt(findWord(first,name[0]))+1,
+		ns = parseInt(findWord(second,name[1]))+1,
+		nt = parseInt(findWord(third,name[2]))+1,
+		ps1 = pos1[nf],
+		ps2 = pos2[ns],
+		ps3 = pos3[nt];
+
+	$(".num-con1").css('top',ps1+'px');
+	setTimeout(function(){
+		$(".num-con3").css('top',ps3+'px');
+	},1000);
+	setTimeout(function(){
+		$(".num-con2").css('top',ps2+'px');
+	},2000);
+}
+
+/**
+ * 抽奖程序入口
+ */
+function lottery () {
+	if(!flag){
+		flag = true;
+		reset();
+		setTimeout(doDraw,200);
+		//17s之后才能再次运行
+		setTimeout(function(){
+			flag = false;
+		},17000);
+	}
+}
+/**
+ * 绑定按钮点击事件
+ */
+$(".main3-btn").click(function () {
+	lottery();
+});
+
+$(document).on('keydown',function(e){
+  if((e.keyCode || e.which)==13){
+    lottery();
+  }
+});
+
+</script>
+<div style="text-align:center;">
+</div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>第一个测试</title>
+  <link rel="stylesheet" href="css/qunit.css">
+</head>
+<body>
+  <div id="qunit"></div>
+  <div id="qunit-fixture"></div>
+  <script src="js/jquery.js"></script>
+  <script src="js/qunit.js"></script>
+  <script>
+    QUnit.test( "a basic test example", function( assert ) {
+      var value = "hello";
+      assert.equal( value, "hello", "We expect value to be hello" );
+    });
+    QUnit.test('user info submit',function(assert){
+      var done = assert.async();
+      var fd = new FormData();
+      fd.append('company','小米');
+      fd.append('phone','13256478561');
+      fd.append('name','123');
+      fd.append('email','add@123.com');
+      fd.append('website','www.xiaomi.com');
+      fd.append('qq','12345621');
+      fd.append('remark','fjjfjfjfjdjal;fjdaslfjalsdjflsadjfljsda');
+      $.ajax({
+          type:"post",
+          url:"http://testad.blkee.com/Home/Api/applyOnline",
+          data: fd,
+          processData: false,
+          contentType: false,
+          dataType:'json',
+
+        }).success(function(data){
+          // var data = JSON.parse(res);
+          assert.deepEqual(data.status,1,data.info);
+          done();
+        }).error(function (xhr, info, error) {
+            console.log(info);
+        });
+    });
+    QUnit.assert.mod2 = function( value, expected, message ) {
+        var actual = value % 2;
+        this.pushResult( {
+            result: actual === expected,
+            actual: actual,
+            expected: expected,
+            message: message
+        } );
+    };
+     
+    QUnit.test( "mod2", function( assert ) {
+        assert.expect( 2 );
+     
+        assert.mod2( 2, 0, "2 % 2 == 0" );
+        assert.mod2( 3, 1, "3 % 2 == 1" );
+    });
+  </script>
+</body>
+</html>

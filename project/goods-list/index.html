@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="format-detection" content="email=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<title>商品展示-九块邮</title>
+	<noscript>您的浏览器不支持或未启用Javascript脚本!</noscript>
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/goods.css">
+</head>
+<body>
+	<div class="img_detail">
+		<img src="" alt="">
+	</div>
+	<nav class="navbar navbar-bg navbar-fixed-top">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <a class="navbar-brand" href="#">淘实惠</a>
+	    </div>
+	    <ul class="nav navbar-nav">
+	        <li><a id="jpp" class="event" data-event="click#togglePage" href="#">卷皮</a></li>
+	        <li><a id="jkyp" class="event" data-event="click#togglePage" href="#">九块邮</a></li>
+	    </ul>
+	  </div>
+	</nav>
+	<div class="container-fluid">
+			<div class="row page-header">
+			  <h1 class="col-sm-5"><span class="site">卷皮</span>当日商品<span class="count"></span></h1>
+
+			  <div class="action col-sm-3">
+			  	<button class="btn btn-success event" data-event="click#collectIds">下载选中商品</button>
+			  </div>
+			  <div class="input-group col-sm-4">
+			    <input id="searchText" type="text" class="form-control isearch" placeholder="搜索商品" autocomplete>
+			    <span class="input-group-btn">
+			      <button class="btn btn-success event" data-event="click#search" id="isearch" type="button">搜索</button>
+			    </span>
+			  </div><!-- /input-group -->
+			</div>
+
+		<div class="row fix_thead">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>商品图片</th>
+						<th>商品名称</th>
+						<th >商品长名称</th>
+						<th id="prePrice" class="po event sorting" data-event="click#doSort" data-field="deal_cost_price">原价</th>
+						<th id="curPrice" class="po event sorting" data-event="click#doSort" data-field="deal_price" >当前价</th>
+						<th >开始时间</th>
+						<th >结束时间</th>
+						<th>销售状态</th>
+						<th>是否包邮</th>
+						<th >商品淘宝id</th>
+						<th>选择</th>
+					</tr>
+				</thead>
+			</table>
+		</div>
+		<div class="row content">
+			<div class="col-sm-12">
+				<table class="table table-hover">
+					<tbody id="contGoods" class="event" data-event="hover#imgDetail#img"></tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<script type="x/template" id="tmpGoods">
+		<tr data-id="{{taobao_id}}" data-link="{{deal_taobao_link}}">
+			<td><img src="{{deal_image}}"></td>
+			<td>{{deal_title}}</td>
+			<td>{{deal_title_long}}</td>
+			<td>{{deal_cost_price}}</td>
+			<td>{{deal_price}}</td>
+			<td>{{deal_start_time}}</td>
+			<td>{{deal_end_time}}</td>
+			<td>{{deal_sell_status}}</td>
+			<td>{{deal_is_mail}}</td>
+			<td>{{taobao_id}}</td>
+			<td><input type="checkbox" name="id"></td>
+		</tr>
+	</script>
+	<script src="js/jquery-2.1.4.js"></script>
+	<script src="js/bootstrap.js"></script>
+	<script src="js/putil.js"></script>
+	<script src="js/goods.js"></script>
+</body>
+</html>

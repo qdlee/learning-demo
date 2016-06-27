@@ -1,0 +1,31 @@
+*{ font-family:"微软雅黑";}
+body, form, h1, h2, h3, h4, html, input, ol, p, pre, ul {padding:0;margin:0;border:0; float: none; outline:none;
+-webkit-tap-highlight-color: transparent; 
+-webkit-appearance: none;  }
+li, ol, ul {list-style:none;display:block}
+
+header{ width:14rem; margin:0.5rem auto;}
+header h3{ font-size:0.65rem;color:#063; margin-top:1rem;}
+.wt{width:12rem; margin: 0 auto; height: 4rem; border-bottom:1px solid #CCC; border-top:1px solid #ccc;}
+.wt ul li p{width: 1.8rem; height: 1.8rem; margin: 0.5rem auto; border:2px solid #ffd946; text-align: center; line-height:1.8rem; border-radius:0.5rem ; background: #fff; margin-top:1rem;cursor: pointer;}
+
+.text_two{ width:50%; float:left;}/*题目两个字*/
+.text_three{ width:33%; float:left;}/*题目三个字*/
+.text_four{ width:25%; float:left;}/*题目四个字*/
+
+.bottom_sut{width:100%; line-height:3rem; background:#ffd946; font-size:0.7rem; font-weight:700; margin-top:1rem}
+.bottom_sut:active{background:#fff; border:1px solid #ffd946}
+
+.answer{ width:15rem;margin: 0 auto; hei ght:18rem;}
+.answer ul li{float:left;width:20%;}
+.input_ans{width: 2rem; height: 2rem; border-radius: 0.5rem; float: left; margin:0.5rem;text-align: center; font-size: 0.65rem; color: #333; border:1px solid #ffd946; background:#fff; margin-top:1rem; outline: none;}
+.input_ans:hover{ background: #ffd946; color:#fff; outline:none;}
+checked{ background: #0066FF;}
+@media only screen and (min-width:640px){
+.answer{ width:21rem; margin: 0 auto; hei ght:14rem}
+.answer ul li{ float: left; width:3rem;}	
+} 
+@media only screen and (min-height:568px){
+	footer{ position:fixed; bottom:0; left:0; width:100%}
+	
+	}

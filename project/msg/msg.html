@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <title>消息提示</title>
+    <link rel="stylesheet" href="template/css/base.css">
+    <style>
+        .msg_wrap{
+            display:none;
+            position: fixed;
+            top:0;right:0;bottom:0;left:0;
+            background:rgba(0, 0, 0, .3);
+            color:#9b9b9b;
+            font-size: 14px;
+            opacity:0;
+            transition:opacity .4s;
+        }
+        .msg{
+            position:absolute;
+            bottom:-600px;left:0;
+            width:100%;
+            padding-top: 10px;
+            background:#fefefe;
+            transition:bottom .3s;
+        }
+        .title h3{
+            text-align: center;
+            color:#333;
+            line-height: 20px;
+        }
+        .content p{
+            width:90%;
+            min-height:64px;
+            margin: 0 auto;
+            padding:10px 0;
+            line-height: 16px;
+        }
+        .buttons{
+            height:39px;
+            border-top: solid 1px lightgreen;
+        }
+        .btn{
+            display:block;
+            float: left;
+            padding:0;
+            height:100%;
+            box-sizing:border-box;
+            text-align: center;
+            line-height: 39px;
+            background:#fff;
+        }
+        .btn:active{
+            background:lightcoral;
+            color:#fff;
+        }
+        .btn_single{
+            width:100%;
+        }
+        .btn_double{
+            width:50%;
+        }
+        .btn_double_left{
+            border-right:solid 1px lightgreen;
+        }
+        .btn_triple{
+            width:33.3%;
+            border-right:solid 1px lightgreen;
+        }
+        .btn_triple_last{
+            width:33.4%;
+            border-right:none;
+        }
+        .toast{
+            position: fixed;
+            left:50%;
+            transform:translateX(-50%);
+            max-width:100%;
+            background: rgba(0, 0, 0, .5);
+            color:#fff;
+            font-size: 14px;
+            line-height: 1.4;
+            border-radius:5%;
+
+            bottom:-50px;
+            transition:all .3s ease;
+        }
+        .toast p{
+            max-width:100%;
+            padding:5px;
+        }
+        /*theme1*/
+        .msg_wrap{
+            
+        }
+        .msg{
+            left:50%;
+            width:60%;
+            transform:translate(-50%,50%);
+            transition:bottom .5s;
+        }
+        .msg_inview{
+            bottom:50%;
+        }
+    </style>
+</head>
+<body>
+    <button id="showMsg">显示</button>
+    <div class="toast">
+        <p></p>
+    </div>
+<!--     <div class="msg_wrap">
+        <div class="msg">
+            <div class="title">
+                <h3>最佳歌手</h3>
+            </div>
+            <div class="content">
+                <p>
+                    直到某一天碰面，在某家餐厅或商店。你挽着他和我擦肩，还好，我手也有人牵。广播里响起的歌，是恍若隔世的注解。最佳歌手的头衔，大致上有了人选。最佳歌手的感言，记得要慢慢念...
+                </p>
+            </div>
+            <div class="buttons">
+                <button data-action="reject" class="btn btn_double btn_double_left">取消</button>
+                <button data-action="accept" class="btn btn_double">确定</button>
+                <button data-action="get" class="btn btn_single">我知道了</button>
+                <button data-action="cancel" class="btn btn_triple">取消</button>
+                <button data-action="reject" class="btn btn_triple">拒绝</button>
+                <button data-action="accept" class="btn btn_triple btn_triple_last">接受</button>
+            </div>
+        </div>
+    </div> -->
+    <script src="jquery.js"></script>
+    <script>
+
+        (function(){
+
+            var options;           
+            
+            var defaults = {
+                title:'提示',
+                content:'',
+                cancelTxt:'取消',
+                acceptTxt:'确定',
+                rejectTxt:'取消',
+                getTxt:'好的',
+                buttonType:'one'
+            };
+
+            var actionList = {
+                reject:function(msg,btnText){
+                    hideMsg();
+                },
+                accept:function(msg,btnText){
+                    hideMsg();
+                },
+                get:function(msg,btnText){
+                    hideMsg();
+                },
+                cancel:function(msg,btnText){
+                    hideMsg();
+                }
+            }
+
+
+            function showMsg() {
+                $('.msg_wrap').css('display','block');
+                setTimeout(function() {
+                    $('.msg_wrap').css('opacity',1);
+                    $('.msg').addClass('msg_inview');
+                }, 10);
+            }
+
+            function hideMsg() {
+                $('.msg_wrap').css('opacity',0);
+                $('.msg').removeClass('msg_inview');
+                setTimeout(function() {
+                    $('.msg_wrap').remove();
+                }, 1000);
+            }
+
+            function showToast(text) {
+                if(!text){
+                    return;
+                }
+                $('.toast p').html(text);
+                $('.toast').css('bottom','16%');
+                setTimeout(function() {
+                    $('.toast').css('opacity',0);
+                    setTimeout(function() {
+                        $('.toast').css('bottom','-50px');
+                        setTimeout(function() {
+                            $('.toast').css('opacity',1);
+                        }, 300);
+                    }, 300);
+                }, 2000);
+            }
+
+            function doAction(e) {
+                var msg = $(this),
+                    action = $(e.target).data('action'),
+                    btnText = $(e.target).html();
+                if(!action){
+                    return;
+                }
+                if(typeof options[action] === 'function'){
+                    options[action]();
+                }
+                actionList[action](msg,btnText);
+            }
+
+            function show(param) {
+
+                options = $.extend(defaults,param);
+
+                var buttonList = {
+                    one: `<button data-action="get" class="btn btn_single">${options.getTxt}</button>`,
+                    two: `<button data-action="reject" class="btn btn_double btn_double_left">${options.rejectTxt}</button>
+                                    <button data-action="accept" class="btn btn_double">${options.acceptTxt}</button>`,
+                    three: `<button data-action="cancel" class="btn btn_triple">${options.cancelTxt}</button>
+                                    <button data-action="reject" class="btn btn_triple">${options.rejectTxt}</button>
+                                    <button data-action="accept" class="btn btn_triple btn_triple_last">${options.acceptTxt}</button>`,
+                }
+
+                options.buttons = buttonList[options.buttonType];
+
+                var msgTag = `<div class="msg_wrap">
+                                    <div class="msg">
+                                        <div class="title">
+                                            <h3>${options.title}</h3>
+                                        </div>
+                                        <div class="content">
+                                            <p>${options.content}</p>
+                                        </div>
+                                        <div class="buttons">${options.buttons}</div>
+                                    </div>
+                                </div>`;
+                
+                $('body').append(msgTag);
+                $('.msg_wrap').on('click',doAction);
+                showMsg();
+            }
+            window.msg = {
+                show:show,
+                showToast:showToast
+            }
+        }());
+
+        
+        $('#showMsg').on('click',function(){
+            msg.show({
+                buttonType:'two',
+                title:'摄影艺术',
+                content:'红雨瓢泼泛起了回忆怎么潜，你美目如当年流转我心间，渡口边最后一面洒下了句点，与你若只如初见何需感伤离别！',
+                acceptTxt:'真好',
+                rejectTxt:'很差',
+                reject:function(){
+                    msg.showToast('转世燕，还故榻，为你衔来二月的花');
+                },
+                accept:function(){
+                    msg.showToast('热情没及格，真性情得高分');
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui">
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<title>DNA调查问卷</title>
+<link rel="stylesheet" type="text/css" href="css/css.css">
+<script charset="utf-8" src="js/jquery.js"></script>
+<script charset="utf-8" src="js/crossword.js"></script>
+<script>
+
+	//这是适应代码
+	
+var BUCKET="0";
+var NOTICE="";
+(function(){
+	var dom_html=document.documentElement;
+	var adjust=function(){
+		var lastWidth;
+		return function(){
+			var width=Math.min(dom_html.offsetWidth,480);
+			if(lastWidth!=width)dom_html.style.fontSize=(20/320*(lastWidth=width))+"px";
+		};
+	}();
+	adjust();
+}()); 
+</script>
+<script>
+
+</script>
+</head>
+<body style="background:#fcfcfc;">
+<audio id="ply" ></audio>
+<header>
+  <article>
+    <h3>请问以下这道题的答案是由四个字构成的那个词语？</h3>
+  </article>
+</header>
+<section class="wt">
+    <ul id="ianswer">
+      <li class="text_four">
+        <p class="empty"></p>
+      </li>
+      <li class="text_four">
+        <p class="empty"></p>
+      </li>
+      <li class="text_four">
+        <p class="empty"></p>
+      </li>
+      <li class="text_four">
+        <p class="empty"></p>
+      </li>
+    </ul>
+</section>
+<section class="answer">
+  <ul id="ioption">
+    <li>
+      <input type="button" class="input_ans" value="蛇">
+    </li>
+    <li>
+      <input type="button" class="input_ans" value="猪">
+    </li>
+    <li>
+      <input type="button" class="input_ans" value="牛">
+    </li>
+    <li>
+      <input type="button" class="input_ans" value="羊">
+    </li>
+    <li>
+      <input type="button" class="input_ans" value="鸡">
+    </li>
+    <li>
+      <input type="button" class="input_ans" value="鸭">
+    </li>
+    <li>
+      <input type="button" class="input_ans" value="上">
+    </li>
+    <li>
+      <input type="button" class="input_ans" value="下">
+    </li>
+    <li>
+      <input type="button" class="input_ans" value="左">
+    </li>
+    <li>
+      <input type="button" class="input_ans" value="右">
+    </li>
+    <li>
+      <input type="button" class="input_ans" value="东">
+    </li>
+    <li>
+      <input type="button" class="input_ans" value="西">
+    </li>
+    <li>
+      <input type="button" class="input_ans" value="南">
+    </li>
+    <li>
+      <input type="button" class="input_ans" value="北">
+    </li>
+    <li>
+      <input type="button" class="input_ans" value="好">
+    </li>
+    <li>
+      <input type="button" class="input_ans" value="坏">
+    </li>
+    <li>
+      <input type="button" class="input_ans" value="大">
+    </li>
+    <li>
+      <input type="button" class="input_ans" value="小">
+    </li>
+    <li>
+      <input type="button" class="input_ans" value="黑">
+    </li>
+    <li>
+      <input type="button" class="input_ans" value="白">
+    </li>
+  </ul>
+</section>
+<footer>
+  <input id="submit" type="button" value="提交" class="bottom_sut" disabled="disabled">
+</footer>
+</body>
+</html>

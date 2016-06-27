@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>Document</title>
+    <noscript>您的浏览器不支持或未启用Javascript脚本!</noscript>
+    <script type="text/javascript">
+        (function(){var a=document.documentElement,b=function(){a.style.fontSize=Math.min(a.offsetWidth,540)/16+"px"};addEventListener("resize",function(){var a;return function(){clearTimeout(a);a=setTimeout(b,300)}}(),!1);b()})();
+    </script>
+    <link rel="stylesheet" href="css/base.css">
+</head>
+<body>
+    <div class="center">
+        <!-- <input type="date" id="sDate" style="apparence:but"> -->
+        <select name="" id="" id="sDate" >
+            <option value="">option1</option>
+            <option value="">option2</option>
+            <option value="">option3</option>
+        </select>
+        <button id="btn">选择日期</button>
+    </div>
+    <input type="hidden" id="serverData" data-cpage="ofeed" data-token="{}">
+    <script src="js/jquery-2.1.4.js"></script>
+    <script>
+        $('#btn').click(function(e){
+            $('#sDate').focus();
+        });
+    </script>
+</body>
+</html>
