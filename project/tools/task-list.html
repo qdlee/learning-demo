@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+  <meta charset="UTF-8">
+  <title>任务列表</title>
+</head>
+<body>
+  <h1>任务列表</h1>
+  <table  border="1">
+  <thead>
+    <tr>
+      <th>名称</th>
+      <th>本地文件夹（文件）</th>
+      <th>服务器文件夹（文件）</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+    <tbody id="taskList">
+    </tbody>
+  </table>
+  <script>
+    const fs = require('fs');
+    const vinylFs = require('vinyl-fs');
+    const ftp = require('vinyl-ftp');
+    const $ = function (selector) {
+      return document.querySelector(selector);
+    };
+
+    let taskList = null;
+
+    fs.readFile('data/task.json', (err, data) => {
+      if (err) throw err;
+      const {name, locale, server} = JSON.parse(data)[0];
+      taskList = JSON.parse(data);
+      $('#taskList').innerHTML = `<tr><td>${name}</td><td>${locale}</td><td>${server}</td><td><button type="button" class="start">开始</button></td></tr>`;
+    })
+
+    function log (logs, log2) {
+      if (logs.indexOf('UP') !== -1) {
+        console.log(logs, log2);
+      }
+      // console.log(logs, log2);
+    }
+
+    $('#taskList').addEventListener('click', e => {
+      const { locale, base, server } = taskList[0];
+      const {host, user, pass} = JSON.parse(fs.readFileSync('data/site.json'))[0];
+      const conn = new ftp({
+        host,
+        user,
+        pass,
+        log,
+      });
+      vinylFs.src(locale, {base, buffer: false})
+        .pipe(conn.dest(server));
+    }, false);
+  </script>
+</body>
+</html>

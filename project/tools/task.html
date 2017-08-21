@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+  <meta charset="UTF-8">
+  <title>新建任务</title>
+  <link rel="stylesheet" href="./statics/css/bootstrap.css">
+</head>
+<body data-page="task">
+  <div class="row">
+    <div class="col-xs-10 col-xs-offset-1">
+      <form id="site">
+        <div class="form-group">
+        <label for="name">名称</label>
+        <input type="text" name="name" class="form-control" id="name">
+        </div>
+        <div class="form-group">
+          <label for="sites">所属站点</label>
+          <select class="form-control" name="site" id="sites">
+            <option value="">选择站点</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="locale">本地文件夹(文件)</label>
+          <input id="locale" class="form-control" name="locale" type="text">
+          <button id="js-locale" type="button" class="btn btn-default">选择</button>
+          <!-- <p class="help-block">Example block-level help text here.</p> -->
+        </div>
+        <div class="form-group">
+          <label for="base">基础文件夹</label>
+          <input type="text" name="base" class="form-control" id="base">
+        </div>
+        <div class="form-group">
+          <label for="pass">服务器文件夹(文件)</label>
+          <input type="password"  class="form-control" id="pass">
+        </div>
+        <button type="submit" class="btn btn-primary">新建任务</button>
+        <button type="reset" class="btn btn-default">重置</button>
+      </form>
+    </div>
+  </div>
+  <script src="module/ftp.js"></script>
+</body>
+</html>

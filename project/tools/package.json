@@ -1,0 +1,22 @@
+{
+  "name": "my-ftp",
+  "version": "1.0.0",
+  "description": "ftp automatic",
+  "main": "index.js",
+  "dependencies": {
+    "glob": "^7.1.1",
+    "imagemin": "^5.2.2",
+    "imagemin-mozjpeg": "^6.0.0",
+    "imagemin-optipng": "^5.2.1",
+    "imagemin-pngquant": "^5.0.0",
+    "uuid": "^3.0.1",
+    "vinyl-fs": "^2.4.4",
+    "vinyl-ftp": "^0.5.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "lee",
+  "license": "ISC"
+}

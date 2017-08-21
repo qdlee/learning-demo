@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+  <meta charset="UTF-8">
+  <title>图片压缩</title>
+  <link rel="stylesheet" href="./statics/css/bootstrap.css">
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <form action="">
+          <div class="form-group">
+            <label for="source-file">源文件夹(文件)</label>
+            <input id="source-file" class="form-control" name="source-file" type="text">
+            <button type="button" data-action="sourceFolder" class="btn btn-default">选择文件夹</button>
+            <button type="button" data-action="sourceFile" class="btn btn-default">选择文件</button>
+            <!-- <p class="help-block">Example block-level help text here.</p> -->
+          </div>
+          <div class="form-group">
+            <label for="dist-folder">目标文件夹</label>
+            <input type="text" name="dist-folder" class="form-control" id="dist-folder">
+            <button id="js-dist" data-action="dist" type="button" class="btn btn-default">选择</button>
+            <p class="help-block">默认为当前文件夹同级的‘dist’文件夹</p>
+          </div>
+          <button type="button" data-action="startCompress" class="btn btn-primary">开始压缩</button>
+        </form>
+      </div>
+      <div class="col-xs-12">
+        <p></p>
+      </div>
+    </div>
+  </div>  
+  <script src="module/tools.js"></script>
+</body>
+</html>

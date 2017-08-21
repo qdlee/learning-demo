@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+  <meta charset="UTF-8">
+  <title>My FTP</title>
+  <link rel="stylesheet" href="./statics/css/bootstrap.css">
+  <style>
+    html,
+    body {
+      height: 100%;
+    }
+    .state_stop {
+      color: #9b9b9b;
+    }
+
+    .state_start {
+      color: #0BF423;
+    }
+
+    .list {
+      height: 60%;
+    }
+
+    .log {
+      /* position: fixed;
+      left: 0;
+      bottom: 0;
+      right: 0; */
+      height: 40%;
+      font-size: 14px;
+      line-height: 2;
+      border-top: solid 2px #cecece;
+      /* background: #c1c7c5; */
+      overflow: auto;
+    }
+  </style>
+</head>
+<body data-page="index">
+  <div class="container">
+    <div class="list">
+      <div class="page-header">
+        <h1>任务列表</h1>
+      </div>
+      <div class="row">
+        <div class="col-xs-10 col-xs-offset-1">
+          
+          <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>名称</th>
+              <th>本地文件夹（文件）</th>
+              <th>服务器文件夹（文件）</th>
+              <th>所属站点</th>
+              <th>运行状态</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+            <tbody id="taskList">
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <p id="js-log" class="log">
+      
+    </p>
+  </div>
+  
+  <script src="module/ftp.js"></script>
+</body>
+</html>
